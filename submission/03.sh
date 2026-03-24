@@ -2,5 +2,7 @@
 # Add funds to the address.
 # Return only the Address
 ADDRESS=$(bitcoin-cli -regtest getnewaddress "" "bech32")
-bitcoin-cli -regtest generatetoaddress 1 $ADDRESS > /dev/null
+MINER=$(bitcoin-cli -regtest getnewaddress)
+bitcoin-cli -regtest generatetoaddress 101 "$MINER" > /dev/null
+bitcoin-cli -regtest sendtoaddress "$ADDRESS" 1 > /dev/null
 echo $ADDRESS
